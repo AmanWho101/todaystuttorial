@@ -1,0 +1,70 @@
+---- steps to follow ----
+to check if django is installed
+    python -m django --version
+install django
+    pip install django
+to start new project
+    django-admin startproject mysite
+to run the project 
+    python manage.py runserver
+to create new appliction
+    python manage.py startapp polls
+start buildind your application
+    -> controller
+    -> applications urls
+    -> main project urls
+    test your app
+A Context is a dictionary with 
+variable names as the key and 
+their values as the value
+    create models for your app
+
+get() when you want to get a single unique object
+
+filter() when you want to get all objects 
+            that match your lookup parameters
+
+**args
+Question.objects.get(pk=1)
+
+Question.objects.filter(id=1) 
+
+Question.objects.fetch_related('tablename','tablename')
+
+SomeModel.objects.filter(id=id).delete()
+
+instance = SomeModel.objects.get(id=id)
+instance.delete()
+
+latest_question_list = Question.objects.order_by("-pub_date")[:5]
+    output = ", ".join([q.question_text for q in latest_question_list])
+
+index.html
+
+   app_name = "polls"
+    <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+
+    <a href="/polls/{{ question.id }}/">{{ question.question_text }}</a>
+
+    <a href="{% url 'detail' question.id %}">{{ question.question_text }}</a>
+    
+https://docs.djangoproject.com/en/5.1/ref/databases/
+customize database mysql
+    pip install mysqlclient
+django mysql settings
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'DB_NAME',
+        'USER': 'DB_USER',
+        'PASSWORD': 'DB_PASSWORD',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+        }
+    }
+Activating models
+    "student",
+migration
+    python manage.py makemigrations polls
+Playing with the API
+    python manage shell
