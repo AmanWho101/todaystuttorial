@@ -19,10 +19,11 @@ variable names as the key and
 their values as the value
     create models for your app
 
-get() when you want to get a single unique object
+get(**kwargs) MultipleObjectsReturned if more than one object was found.
 
-filter() when you want to get all objects 
-            that match your lookup parameters
+filter() raises a DoesNotExist exception if an object wasn't found for the given parameters. 
+	This exception is also an attribute of the model class.
+all() fetch all
 
 **args
 Question.objects.get(pk=1)
